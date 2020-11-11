@@ -1,0 +1,66 @@
+﻿---
+layout: slate
+---
+<body>
+<h1 id="react-starting-guide">React Starting Guide</h1>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Clone the repository <a href="https://github.com/WilsonHacks-Competition-Team/SyntHacksTodo.git">https://github.com/WilsonHacks-Competition-Team/SyntHacksTodo.git</a></li>
+<li>Open the <strong>SyntHacksTodo</strong> Folder in a new <strong>VSCode</strong> window</li>
+<li>Open a new terminal window and type <code>npm i</code></li>
+<li>Open the <strong>src</strong> then <strong>components</strong> folders</li>
+<li>Create a new folder with your name as the title</li>
+<li>Inside that folder create an <strong>index.js</strong> file</li>
+</ol>
+<h2 id="new-file">New File</h2>
+<p>Open your index.js file and at the top add the following import statements:</p>
+<pre><code>import  React, {Component} from  'react'
+import { withRouter } from  'react-router-dom';
+</code></pre>
+<p>Next create a class using the following format replaceing <strong>ClassName</strong> with <strong>YourName</strong> (ex: mine would be <strong>Maxwell</strong>):</p>
+<pre><code>export  default  class  ClassName  extends  Component {
+
+}
+</code></pre>
+<p>Then, inside your class we need to make a constructor. Add the following code:</p>
+<pre><code>constructor(props) {
+    super(props)
+    this.state = {
+	    title: "Maxwell", //add your name here
+	}
+}
+</code></pre>
+<p>After that you need to add a render function. Add the following code under your constructor:</p>
+<pre><code>render() {
+    return(
+	    &lt;h1&gt;{this.state.title}&lt;/h1&gt;
+	)
+}
+</code></pre>
+<p>Lastly, we have to add the page to the navigation bar and the routes constants. First open the <strong>constants</strong> folder and then the <strong>routes.js</strong> file. In there, add the following to the bottom:</p>
+<pre><code>export const YOURNAME = "/yourname"; 
+//the first one should be in all caps with the second one all lower case
+</code></pre>
+<p>Next open <strong>App</strong> and then <strong>index.js</strong>. At the top, add</p>
+<pre><code>import  YourName  from  '../YourName';
+</code></pre>
+<p>Then in the render funcition, below TestPage. Add the following:</p>
+<pre><code>&lt;Route  exact  path={ROUTES.YOURNAME}  component={YourName}/&gt;
+</code></pre>
+<p>Lastly, open the <strong>Navigation</strong> folder and then <strong>index.js</strong>. In <strong>index.js</strong>, scroll down to the <strong>NavigationNonAuth</strong> constant and add the following under <strong>Test</strong>:</p>
+<pre><code>// Test part
+&lt;li
+    style={Object.assign({},linkStyle.liLeft, linkStyle.li)}
+&gt;
+	&lt;Link  to={ROUTES.TEST}  style={linkStyle.link}&gt;Test&lt;/Link&gt;
+&lt;/li&gt;
+// Under here add this
+&lt;li
+    style={Object.assign({},linkStyle.liLeft, linkStyle.li)}
+&gt;
+	&lt;Link  to={ROUTES.YOURNAME}  style={linkStyle.link}&gt;YourName&lt;/Link&gt;
+&lt;/li&gt;
+</code></pre>
+<h2 id="running-your-app">Running your App</h2>
+<p>Now if you open your terminal and type <code>npm start</code> your browser should open after a couple of seconds. Then select <strong>YourName</strong> at the top of the page and you should see your page show up.</p>
+</body>
